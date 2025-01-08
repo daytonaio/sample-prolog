@@ -1,12 +1,11 @@
-This repository contains a README file sample for Daytona Samples and the MIT License.
+# Sample Prolog
 
-It can be used as a template to create sample repositories that can be added into [Daytona](https://github.com/daytonaio/daytona).
+This is an example Prolog project used in Daytona.
 
-Once you finish your sample and it gets merged, you can open a PR in the Daytona repo and submit the sample into the [index file](https://github.com/daytonaio/daytona/blob/main/hack/samples/index.json).
+2 differents Prolog environments are being installed:
 
-# Sample <LANGUAGE/FRAMEWORK>
-
-Sample description
+- [GNU Prolog (gprolog)](http://www.gprolog.org/)
+- [swi-prolog](https://www.swi-prolog.org/)
 
 ---
 
@@ -17,18 +16,72 @@ Sample description
 1. **Install Daytona**: Follow the [Daytona installation guide](https://www.daytona.io/docs/installation/installation/).  
 2. **Create the Workspace**:  
    ```bash  
-   daytona create <SAMPLE_REPO_URL> 
-   ```  
+   daytona create https://github.com/daytonaio/sample-prolog
+   ```
 
-... MORE STEPS IF NEEDED ...
+3. Verify Prolog environment version
 
-4. **Start the Application**:  
-   ```bash  
-   command to start the app
-   ```  
+```bash
+$ gprolog --version
+Prolog top-Level (GNU Prolog) x.y.z
+```
+
+```bash  
+$ swipl --version
+SWI-Prolog version x.y.z for x86_64-linux
+```
+
+3. Open `main.pro` (in Visual Studio Code change bottom right "Plain Text" to "Prolog")
+(this will be required until https://github.com/sazzledazzle/prolog-runner/issues/1 is not fixed)
+
+Look at facts and rules which have been defined.
+
+4. **Start the Application as a script with swipl**:  
+
+Create a new Terminal by pressing on "+"
+
+Cick on "Run Prolog File" to execute this file.
+
+It should run
+
+```
+swipl -q -f "/workspaces/sample-prolog/main.pro" -t halt.
+```
+
+and display
+
+```
+Test grandparent(john, ann): true
+Test sibling(ann, pat): true
+Test ancestor(john, jim): true
+Mary's children: [ann,pat]
+```
+
+5. **Start the application as a script with gprolog**:
+
+```bash
+$ gprolog
+GNU Prolog 1.4.5 (64 bits)
+Compiled Feb 23 2020, 20:14:50 with gcc
+By Daniel Diaz
+Copyright (C) 1999-2020 Daniel Diaz
+| ?- [main].
+compiling /workspaces/sample-prolog/main.pro for byte code...
+/workspaces/sample-prolog/main.pro compiled, 49 lines read - 4240 bytes written, 51 ms
+Test grandparent(john, ann): true
+Test sibling(ann, pat): true
+Test ancestor(john, jim): true
+Mary's children: [ann,pat]
+
+(4 ms) yes
+```
+
+Use CTRL+D to quit interpreter.
+
+6. Test `gprolog` or `swipl` as REPL (Read–eval–print loop).
 
 ---
 
 ## ✨ Features  
 
-List of sample features (e.g. realtime chat app, standardized development environment with devcontainers)
+standardized development environment with devcontainers
