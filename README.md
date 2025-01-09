@@ -78,7 +78,73 @@ Mary's children: [ann,pat]
 
 Use CTRL+D to quit interpreter.
 
+You can also run `main.pro` script like so:
+
+```bash
+$ gprolog --consult-file main.pro
+```
+
 6. Test `gprolog` or `swipl` as REPL (Read–eval–print loop).
+
+Exemple with `gprolog`. Define facts and rules.
+
+`/* ... */` are multiline comments and `% ...` after a command is a single comment.
+
+```bash
+$ gprolog
+```
+```prolog
+| ?- /*
+      Facts about parent relationships
+      */
+      assertz(parent(john, mary)). % john is parent of mary
+yes
+| ?- assertz(parent(john, tom)). % john is parent of tom
+yes
+| ?- assertz(parent(mary, ann)). % mary is parent of ann
+yes
+| ?- assertz(parent(mary, pat)). % mary is parent of pat
+yes
+| ?- assertz(parent(tom, jim)). % tom is parent of jim
+yes
+| ?- /*
+      Rules
+      */ assertz((grandparent(X, Z) :- parent(X, Y), parent(Y, Z))). % X is grandparent of Z if X is parent of Y and Y is parent of Z
+yes
+| ?- assertz((sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y)). % X is sibling of Y if they share a parent and are not the same person
+yes
+| ?- assertz((ancestor(X, Y) :- parent(X, Y))). % X is ancestor of Y if X is parent of Y
+yes
+| ?- assertz((ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y))). % or X is parent of someone who is ancestor of Y
+yes
+```
+
+Puis les requêtes :
+```prolog
+| ?- grandparent(john, ann).
+true ?
+
+yes
+| ?- sibling(ann, pat).
+true ?
+
+yes
+| ?- ancestor(john, jim).
+
+true ?
+
+yes
+| ?- findall(X, parent(mary, X), Children).
+
+Children = [ann,pat]
+
+(1 ms) yes
+```
+
+To quit interpreter :
+```prolog
+| ?- halt.
+```
 
 ---
 
