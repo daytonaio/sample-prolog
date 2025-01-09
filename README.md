@@ -146,6 +146,19 @@ To quit interpreter :
 | ?- halt.
 ```
 
+Similiar REPL usage can be done with SWI-Prolog but be aware that
+
+```
+?- asserta(parent(alice, bob)).  % adds at beginning
+?- assertz(parent(carol, dave)). % adds at end
+?- assert(parent(eve, frank)).   % same as assertz in SWI-Prolog
+```
+
+The order can matter because Prolog searches clauses in the order they were added, which can affect:
+
+- Performance (earlier clauses are checked first)
+- Results (when multiple solutions exist)
+
 ---
 
 ## ✨ Features  
