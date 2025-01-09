@@ -119,7 +119,7 @@ yes
 yes
 ```
 
-Puis les requêtes :
+Than queries:
 ```prolog
 | ?- grandparent(john, ann).
 true ?
