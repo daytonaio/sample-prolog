@@ -4,8 +4,8 @@ This is an example Prolog project used in Daytona.
 
 2 differents Prolog environments are being installed:
 
-- [GNU Prolog (gprolog)](http://www.gprolog.org/)
-- [swi-prolog](https://www.swi-prolog.org/)
+- [GNU Prolog (`gprolog`)](http://www.gprolog.org/)
+- [SWI-Prolog (`swipl`)](https://www.swi-prolog.org/)
 
 ---
 
@@ -34,9 +34,9 @@ SWI-Prolog version x.y.z for x86_64-linux
 3. Open `main.pro` (in Visual Studio Code change bottom right "Plain Text" to "Prolog")
 (this will be required until https://github.com/sazzledazzle/prolog-runner/issues/1 is not fixed)
 
-Look at facts and rules which have been defined.
+Look at facts and rules which have been defined in `main.pro`.
 
-4. **Start the Application as a script with swipl**:  
+4. **Start the Application as a script with `swipl`**:  
 
 Create a new Terminal by pressing on "+"
 
@@ -44,8 +44,8 @@ Cick on "Run Prolog File" to execute this file.
 
 It should run
 
-```
-swipl -q -f "/workspaces/sample-prolog/main.pro" -t halt.
+```bash
+$ swipl -q -f "/workspaces/sample-prolog/main.pro" -t halt.
 ```
 
 and display
